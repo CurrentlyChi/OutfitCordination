@@ -46,3 +46,30 @@ flex: 1
 align-items: center (上下中央揃え　垂直方向)　
 justify-content: center(左右中央揃え　水平方向)
 >> Flexコンテナにしか効きません
+
+14.
+max-width: 900px (窓の横幅の上限)＞これ以上は広がらない
+＞最大でこの幅、画面が狭ければ縮む
+margin : 20px auto
+(上下20px,左右autoで中央寄せ)
+
+15.flexの勝手に効くデフォルト
+align-items: stretch > 交差軸（縦方向、横並びの場合）で引き伸ばす
+justify-content: flex-start > 主軸（横方向）で左詰め
+
+16. position
+pair:
+  1 親：position: relative
+  2. 子: position: absolute
+  >親を基準点にして、上下左右の位置に要素を配置する
+   position : absolute
+   top : 8px>基準点から8px
+   bottom: 8px 
+
+17. display: flex 
+ margin-left : auto
+ >左側の余白を最大まで取る>結果その要素が右端に押し出される
+
+
+
+
