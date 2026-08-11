@@ -69,6 +69,7 @@ pair:
 17. display: flex 
  margin-left : auto
  >左側の余白を最大まで取る>結果その要素が右端に押し出される
+ flex-direction
 
 18. img: 
 image.src = ...
@@ -103,3 +104,19 @@ const user = {};
 25. setTimeout(()=>{
 
 }, 2000)
+
+26.
+出す・隠す」の切り替え
+
+27. querySelector: classを探す
+document.querySelector(".progresswindow")
+
+28. timeId
+const timeId = setInterval(...)
+clearInterval(timeId)>> どのタイマーを止めたいのか、特定できる
+
+29.top: 50%; left: 50%; 
+top: 50%; left: 50%; ＝ 「左上角」 を真ん中に置く
+translate(-50%, -50%); ＝ 「中心」 が真ん中に来るように自分自身のサイズ分だけズラす
+
+30.

@@ -78,9 +78,33 @@ selectButtonElement.addEventListener("click", () => {
 
 const outfitTranferElement = document.getElementById("outfittranfer-button");
 const previewImgElement = document.getElementById("preview-img");
+const progressWindowElement = document.querySelector(".progress-window");
+const blueProgressingContainer = document.getElementById("blue-rectangular");
+const progressWindowTitleElement = document.getElementById("progress-title");
+
+const total = 20;
+
 outfitTranferElement.addEventListener("click", () => {
-  console.log("Start Processing");
-  setTimeout(() => {
-    previewImgElement.src = selectedItems.top;
-  }, 2000);
+  blueProgressingContainer.innerHTML = "";
+  progressWindowElement.style.display = "flex";
+  let percent = 0;
+  const timeId = setInterval(() => {
+    const fragment = document.createDocumentFragment();
+    percent += 20;
+    progressWindowTitleElement.textContent = `Downloading ${percent}%`;
+    if (percent >= 100) {
+      clearInterval(timeId);
+      progressWindowElement.style.display = "none";
+
+      previewImgElement.src = selectedItems.top;
+    }
+    const displayBoxNumber = Math.floor((total * percent) / 100);
+    blueProgressingContainer.innerHTML = "";
+    for (let i = 0; i < displayBoxNumber; i++) {
+      const newDiv = document.createElement("div");
+      newDiv.classList.add("rectangular-box");
+      fragment.appendChild(newDiv);
+    }
+    blueProgressingContainer.appendChild(fragment);
+  }, 600);
 });
