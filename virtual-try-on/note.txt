@@ -77,4 +77,29 @@ image.src = ...
 変数に入れたり、returnで返したり、引数で渡したりできる
 「返すのは処理の手順、実行するのは外」
 
+20.
+const randomizeTop = carousel_control_button(
+  "top-img",
+  tops,
+  "top-next-button",
+  "top-previous-button",
+);
+ a, top, bottomの左右ボタンにイベント登録される
+ b, 関数 randomを返却する
 
+21. objectに包んで、返す
+オブジェクト {...} に包んで返します
+return { randomize, imgElement };
+
+22.
+内部に状態(index)を隠し持ち、外には操作だけを見せる
+
+23.document.getElementById 
+document.getElementById() で取得できる DOM（Document Object Model）要素は、JavaScript におけるオブジェクトの一種です。
+
+24. オプジェクトを初期化する方法
+const user = {};
+
+25. setTimeout(()=>{
+
+}, 2000)

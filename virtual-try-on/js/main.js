@@ -16,7 +16,6 @@ function carousel_control_button(
   previous_button,
 ) {
   let currenIndex = 0;
-  console.log(clothes_img[currenIndex]);
   const imgElement = document.getElementById(id);
   const next_Button = document.getElementById(next_button);
   const previous_Button = document.getElementById(previous_button);
@@ -38,22 +37,13 @@ function carousel_control_button(
   function randomize() {
     const randomInt = Math.floor(Math.random() * clothes_img.length);
     imgElement.src = clothes_img[randomInt];
-    console.log("ok");
   }
-  return randomize;
+  function getCurrent() {
+    return imgElement.src;
+  }
+  return { randomize, getCurrent };
 }
-carousel_control_button(
-  "top-img",
-  tops,
-  "top-next-button",
-  "top-previous-button",
-);
-carousel_control_button(
-  "bottom-img",
-  bottoms,
-  "bottom-next-button",
-  "bottom-previous-button",
-);
+
 const randomizeTop = carousel_control_button(
   "top-img",
   tops,
@@ -68,6 +58,29 @@ const randomizeBottom = carousel_control_button(
 );
 const randomButtonElement = document.getElementById("random-button");
 randomButtonElement.addEventListener("click", () => {
-  randomizeTop();
-  randomizeBottom();
+  randomizeTop.randomize();
+  randomizeBottom.randomize();
+});
+
+const selectButtonElement = document.getElementById("select-button");
+
+function getOutfit() {
+  return {
+    top: randomizeTop.getCurrent(),
+    bottom: randomizeBottom.getCurrent(),
+  };
+}
+let selectedItems = {};
+selectButtonElement.addEventListener("click", () => {
+  selectedItems = getOutfit();
+  console.log(selectedItems);
+});
+
+const outfitTranferElement = document.getElementById("outfittranfer-button");
+const previewImgElement = document.getElementById("preview-img");
+outfitTranferElement.addEventListener("click", () => {
+  console.log("Start Processing");
+  setTimeout(() => {
+    previewImgElement.src = selectedItems.top;
+  }, 2000);
 });
