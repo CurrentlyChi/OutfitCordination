@@ -119,4 +119,9 @@ clearInterval(timeId)>> どのタイマーを止めたいのか、特定でき�
 top: 50%; left: 50%; ＝ 「左上角」 を真ん中に置く
 translate(-50%, -50%); ＝ 「中心」 が真ん中に来るように自分自身のサイズ分だけズラす
 
-30.
+30. position 
+fixed, relative
+
+31. flex: alignt items
+align items: 全ての子要素を中央に配置する
+margin : 0 auto >> 対象の要素だけ

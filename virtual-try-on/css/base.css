@@ -96,6 +96,7 @@ button:active {
 
 #cancel-button {
   max-width: 200px;
+  align-self: center;
 }
 #blue-rectangular {
   width: 300px;

@@ -83,19 +83,19 @@ const blueProgressingContainer = document.getElementById("blue-rectangular");
 const progressWindowTitleElement = document.getElementById("progress-title");
 
 const total = 20;
+let timeId = null;
 
 outfitTranferElement.addEventListener("click", () => {
   blueProgressingContainer.innerHTML = "";
   progressWindowElement.style.display = "flex";
   let percent = 0;
-  const timeId = setInterval(() => {
+  timeId = setInterval(() => {
     const fragment = document.createDocumentFragment();
     percent += 20;
     progressWindowTitleElement.textContent = `Downloading ${percent}%`;
     if (percent >= 100) {
       clearInterval(timeId);
       progressWindowElement.style.display = "none";
-
       previewImgElement.src = selectedItems.top;
     }
     const displayBoxNumber = Math.floor((total * percent) / 100);
@@ -107,4 +107,9 @@ outfitTranferElement.addEventListener("click", () => {
     }
     blueProgressingContainer.appendChild(fragment);
   }, 600);
+});
+const cancelButton = document.getElementById("cancel-button");
+cancelButton.addEventListener("click", () => {
+  progressWindowElement.style.display = "none";
+  clearInterval(timeId);
 });
