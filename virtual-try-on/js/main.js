@@ -9,7 +9,8 @@ const bottoms = [
   "https://placehold.co/150x180?text=Bottom+3",
   "https://placehold.co/150x180?text=Bottom+4",
 ];
-const defautModelImg = "https://placehold.co/300x400";
+const defautModelImg =
+  "https://raw.githubusercontent.com/CurrentlyChi/OutfitCordination/main/virtual-try-on/img/model.jpg";
 const previewImgElement = document.getElementById("preview-img");
 previewImgElement.src = defautModelImg;
 function carousel_control_button(

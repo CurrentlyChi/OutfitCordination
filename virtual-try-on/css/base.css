@@ -13,9 +13,10 @@ body {
   background: #c0c0c0;
   padding: 4px;
   display: flex;
-  flex: 1.3;
+  flex: 1;
   align-items: center;
   justify-content: center;
+  object-fit: contain;
 }
 .content {
   display: flex;
@@ -27,7 +28,7 @@ body {
   margin-bottom: 20px;
 }
 .left-column {
-  flex: 1;
+  flex: 0 0 280px;
 }
 .sunken {
   border-top: 2px solid #808080;
@@ -108,4 +109,14 @@ button:active {
   background-color: blue;
   width: 15px;
   height: 20px;
+}
+#top-img {
+  height: 150px;
+  width: 200px;
+  object-fit: contain;
+}
+#bottom-img {
+  height: 150px;
+  width: 200px;
+  object-fit: contain;
 }
