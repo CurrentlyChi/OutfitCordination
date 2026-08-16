@@ -124,4 +124,23 @@ fixed, relative
 
 31. flex: alignt items
 align items: 全ての子要素を中央に配置する
+            親の要素で指定する
 margin : 0 auto >> 対象の要素だけ
+　　　　　　0: 上下の余白をゼロに
+　　　　　　auto:左右の余白を均等にして、中央揃えにする
+　　　　　　上下の余白は作らず、左右のみ中央揃え
+align-self : center>>動かしたい子要素自身
+
+32.ブラウザファイル選択windows
+  html: 
+          <input type="file" id="file-upload-tops" style="display: none" />
+          >>デフォルトの表示を隠す
+  js:
+     function setupUploadTrigger(buttonId, inputId) {
+  const fileInput = document.getElementById(buttonId);
+  const customBtn = document.getElementById(inputId);
+  customBtn.addEventListener("click", () => {
+    fileInput.click();
+  });
+}
+＞＞裏でユーザーを代わりにクリックする

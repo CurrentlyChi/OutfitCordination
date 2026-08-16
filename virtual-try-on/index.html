@@ -16,8 +16,24 @@
         <span>View</span>
         <span>Help</span>
         <div class="upload-group">
-          <button>Upload Tops</button>
-          <button>Upload Bottoms</button>
+          <input
+            type="file"
+            id="file-upload-tops"
+            accept="image/*"
+            multiple
+            style="display: none"
+          />
+          <button id="custom-upload-top-btn" type="button">Upload Tops</button>
+          <input
+            type="file"
+            id="file-upload-bottoms"
+            accept="image/*"
+            multiple
+            style="display: none"
+          />
+          <button id="custom-upload-bottoms-btn" type="button">
+            Upload Bottoms
+          </button>
         </div>
       </div>
       <main class="content">
@@ -48,17 +64,13 @@
           </div>
         </div>
         <div class="preview sunken">
-          <img
-            id="preview-img"
-            src="https://placehold.co/300x400"
-            alt="model"
-          />
+          <img id="preview-img" alt="model" />
         </div>
       </main>
       <div class="actions">
         <button id="random-button">Random</button>
         <button id="select-button">Select</button>
-        <button>Remove Garments</button>
+        <button id="remove-garments">Remove Garments</button>
         <button id="outfittranfer-button">Outfit Transfer</button>
       </div>
       <div class="progress-window raised">

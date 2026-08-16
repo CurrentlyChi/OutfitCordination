@@ -9,6 +9,9 @@ const bottoms = [
   "https://placehold.co/150x180?text=Bottom+3",
   "https://placehold.co/150x180?text=Bottom+4",
 ];
+const defautModelImg = "https://placehold.co/300x400";
+const previewImgElement = document.getElementById("preview-img");
+previewImgElement.src = defautModelImg;
 function carousel_control_button(
   id,
   clothes_img,
@@ -31,7 +34,6 @@ function carousel_control_button(
     if (currenIndex < 0) {
       currenIndex = clothes_img.length - 1;
     }
-    console.log(currenIndex);
     imgElement.src = clothes_img[currenIndex];
   });
   function randomize() {
@@ -41,7 +43,12 @@ function carousel_control_button(
   function getCurrent() {
     return imgElement.src;
   }
-  return { randomize, getCurrent };
+  function update_carousel(clothes_img) {
+    const after_upload_index = clothes_img.length - 1;
+    imgElement.src = clothes_img[after_upload_index];
+  }
+
+  return { randomize, getCurrent, update_carousel };
 }
 
 const randomizeTop = carousel_control_button(
@@ -77,7 +84,6 @@ selectButtonElement.addEventListener("click", () => {
 });
 
 const outfitTranferElement = document.getElementById("outfittranfer-button");
-const previewImgElement = document.getElementById("preview-img");
 const progressWindowElement = document.querySelector(".progress-window");
 const blueProgressingContainer = document.getElementById("blue-rectangular");
 const progressWindowTitleElement = document.getElementById("progress-title");
@@ -113,3 +119,41 @@ cancelButton.addEventListener("click", () => {
   progressWindowElement.style.display = "none";
   clearInterval(timeId);
 });
+const removeGarment = document.getElementById("remove-garments");
+removeGarment.addEventListener("click", () => {
+  previewImgElement.src = defautModelImg;
+  selectedItems = {};
+});
+
+function setupUploadTrigger(
+  inputId,
+  buttonId,
+  clothesArray,
+  update_carousel_object,
+) {
+  const fileInput = document.getElementById(inputId);
+  const customBtn = document.getElementById(buttonId);
+  customBtn.addEventListener("click", () => {
+    fileInput.click();
+  });
+  fileInput.addEventListener("change", () => {
+    const files = fileInput.files;
+    for (const file of files) {
+      const url = URL.createObjectURL(file);
+      clothesArray.push(url);
+    }
+    update_carousel_object.update_carousel(clothesArray);
+  });
+}
+setupUploadTrigger(
+  "file-upload-tops",
+  "custom-upload-top-btn",
+  tops,
+  randomizeTop,
+);
+setupUploadTrigger(
+  "file-upload-bottoms",
+  "custom-upload-bottoms-btn",
+  bottoms,
+  randomizeBottom,
+);
